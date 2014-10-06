@@ -1,0 +1,11 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=5030
+
+If you do allot of work writing Splunk queries (http://www.splunk.com) and you live in the online docs for the Splunk Search Reference (see http://docs.splunk.com/Documentation/Splunk/latest/SearchReference/WhatsInThisManual) this might be helpful.
+
+This does color syntax highlighting for the Splunk 6.1.4 Search Language.  It does not detect syntax errors.  It recognizes all the Splunk Commands, all the Splunk Functions (both the EVAL and WHERE command functions and the functions for STATS, TIMECHART, CHART, ...), and most of the keywords for the Splunk Commands.
+
+There is no error checking, currently.  If you use a function for the EVAL command in your STATS command the function name will be highlighted like normal.  (Something for improvement: in the future the script will be smartened-up to recognize this and indicate it is an error.)
+
+Relative Date/Time Modifiers are recognized and look the same as Strings and Numbers.  The Relative Date/Time Modifiers are recognized anywhere in the search.  That is a bug.  The relative date/time modifiers are only valid after the following keywords: 'earliest', 'latest', 'span'
+
+The relative date/time modifier bug does slow down the whole thing a little.   This will be fixed in the next release.
