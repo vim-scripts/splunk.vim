@@ -113,27 +113,18 @@ syn match splunkRelativeTime "\([-+]\?\(\d\+\)\|@\|+\|-\)\(quarters\|quarter\|qt
 syn match splunkRelativeTime "\([-+]\?\(\d\+\)\|@\|+\|-\)\(years\|year\|yrs\|yr\|y\)\(\s\|$\|+\|-\|@\)\@="  display
 
 " Todo.
-syn keyword aTodo  contained TODO FIXME XXX DEBUG NOTE
+syn keyword splunkTodo  contained TODO FIXME XXX DEBUG NOTE
 
-" SPLUNK DOESN'T HAVE COMMENTS :-(
-" but I have a file with abunch of Splunk queries and comments about what
-" the queries are doing, so naturally I like them in a different color
-" FEEL FREE TO YANK THESE OUT
-" SPLUNK DOESN'T HAVE COMMENTS :-(
-" Comments:
-syn match aComment  "--.*$" contains=aTodo
-syn match aComment  "##.*$" contains=aTodo
-syn match aComment  "++.*$" contains=aTodo
-syn match aComment  "//.*$" contains=aTodo
-syn match aComment  "::.*$" contains=aTodo
-syn match aComment  "\*\*.*$" contains=aTodo
+" As of 8.1.0, Splunk now has comments.
+" https://docs.splunk.com/Documentation/Splunk/8.1.0/Search/Comments
+syn region splunkComment start="```" end="```" extend contains=splunkTodo
 
-syn sync ccomment aComment
+syn sync ccomment splunkComment
 
 
 let b:current_syntax = "splunk"
 
-hi link aComment           Comment
+hi link splunkComment      Comment
 hi link splunkOperator     Special
 hi link splunkSpecial      Special
 hi link splunkKeyword      Identifier
